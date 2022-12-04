@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Services\InspectionService;
 
 class InspectionController extends Controller
 {
+    public function __construct(
+        private InspectionService $inspectionService
+    ) {}
+
     public function index(): JsonResponse
     {
-        return response()->json();
+        $inspections = $this->inspectionService->getAllInspections();
+
+        return response()->json($inspections);
     }
 }

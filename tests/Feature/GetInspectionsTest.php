@@ -24,7 +24,7 @@ class GetInspectionsTest extends TestCase
         $response->assertStatus(200);
         
         $inspections->each(function ($item, $key) use ($response) {
-            $response->assertJson([
+            $response->assertJsonFragment([
                 'id' => $item->id,
                 'date_time' => $item->date_time,
                 'turbine_id' => $item->turbine_id,
