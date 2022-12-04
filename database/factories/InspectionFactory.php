@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use App\Models\Pilot;
 use App\Models\Turbine;
 use Illuminate\Support\Carbon;
@@ -20,7 +21,7 @@ class InspectionFactory extends Factory
     public function definition()
     {
         return [
-            'date_time' => Carbon::today()->subDays(rand(0, 365)),
+            'date_time' => Carbon::today()->subDays(rand(0, 365))->format('Y-m-d H:i:s'),
             'turbine_id' => Turbine::factory(),
             'pilot_id' => Pilot::factory()
         ];

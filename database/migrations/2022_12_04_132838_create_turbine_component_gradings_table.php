@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('turbine_component_gradings', function (Blueprint $table) {
             $table->id();
-            $table->timestampTz('date_time');
+            $table->timestamp('date_time');
             $table->unsignedInteger('grade');
             $table->foreignId('turbine_component_id')->constrained();
             $table->foreignId('inspection_id')->constrained();

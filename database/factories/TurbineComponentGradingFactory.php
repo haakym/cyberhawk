@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use App\Models\Inspection;
 use Illuminate\Support\Carbon;
 use App\Models\TurbineComponent;
@@ -23,7 +24,7 @@ class TurbineComponentGradingFactory extends Factory
         $grades = TurbineComponentGrade::values();
 
         return [
-            'date_time' => Carbon::today()->subDays(rand(0, 365)),
+            'date_time' => Carbon::today()->subDays(rand(0, 365))->format('Y-m-d H:i:s'),
             'grade' => $grades[array_rand($grades)],
             'turbine_component_id' => TurbineComponent::factory(),
             'inspection_id' => Inspection::factory()

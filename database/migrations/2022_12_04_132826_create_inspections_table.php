@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
-            $table->timestampTz('date_time');
+            $table->timestamp('date_time');
             $table->foreignId('turbine_id')->constrained();
             $table->foreignId('pilot_id')->constrained();
             $table->timestamps();
