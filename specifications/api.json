@@ -1,0 +1,174 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Cyber Hawk Tech Test",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "inspections": {
+      "get": {
+        "operationId": "inspections.index",
+        "description": "Get all inspections."
+      },
+      "responses": {
+        "200": {
+          "description": "Get all inspections.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Inspection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "inspections/{id}": {
+      "get": {
+        "operationId": "inspections.show",
+        "description": "Get inspection by inspection id."
+      },
+      "responses": {
+        "200": {
+          "description": "Get inspection by inspection id.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Inspection"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Account": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "WindFarm": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "account_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Turbine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "wind_farm_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "TurbineComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "blade",
+              "rotor",
+              "hub",
+              "generator"
+            ]
+          },
+          "turbine_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Pilot": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Inspection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "date_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "turbine_id": {
+            "type": "integer"
+          },
+          "pilot_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "TurbineComponentGrading": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "date-time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "grade": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "turbine_component_id": {
+            "type": "integer"
+          },
+          "inspection_id": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
