@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace App\CyberHawk\Repositories\InspectionRepository;
 
 use App\Models\Inspection;
 
-class InspectionRepository
+class InspectionRepository implements InspectionRepositoryInterface
 {
     public function __construct(
         private Inspection $inspectionModel

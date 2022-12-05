@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Services\InspectionService;
+use App\CyberHawk\Services\InspectionService\InspectionService;
 
 class InspectionController extends Controller
 {
