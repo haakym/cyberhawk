@@ -4,12 +4,12 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Inspection;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Testing\Fluent\AssertableJson;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class GetInspectionsTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Get all inspections.
      *
@@ -31,5 +31,26 @@ class GetInspectionsTest extends TestCase
                 'pilot_id' => $item->pilot_id,
             ]);
         });
+    }
+
+    /**
+     * Get an inspection.
+     *
+     * @return void
+     */
+    public function testGetInspection(): void
+    {
+        $inspections = Inspection::factory()->count(3)->create();
+
+        $response = $this->get("/api/inspection/{$inspections[0]->id}");
+
+        $response->assertStatus(200);
+        
+        $response->assertJsonFragment([
+            'id' => $inspections[0]->id,
+            'date_time' => $inspections[0]->date_time,
+            'turbine_id' => $inspections[0]->turbine_id,
+            'pilot_id' => $inspections[0]->pilot_id,
+        ]);
     }
 }
