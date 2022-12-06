@@ -67,4 +67,47 @@ composer install --ignore-platform-reqs
 ```
 
 ## Your Notes
-This is a place for you to add your notes, plans, thinking and any feedback you have for us of the task, please feel free to include whatever you like here, we'll make sure to read it. 
+
+Hello! Thank you for reviewing my my work.
+
+### Getting started
+
+1. Run `composer install`.
+2. Check if `.env` file exists. If not, run `cp .env.example .env`.
+3. Run `./vendor/bin/sail up`; docker must be installed and running for this to work.
+4. Run `./vendor/bin/sail artisan migrate` to create the database tables.
+5. Access on `http://localhost` with postman or use front-end solution.
+
+Note: when running `./vendor/bin/sail up` the database may not run correctly if the `DB_HOST` env var in `.env` is set to `127.0.0.1`, it should be set to `DB_HOST=mysql`.
+
+### Approach to solution
+
+- Write an API specification using [Open Api Specification](https://github.com/OAI/OpenAPI-Specification) - this helps plan out endpoints, think about request and response data and also flesh out some domain objects in the process.
+- Use outside-in TDD:
+    - Write a broad encompassing test, i.e. a feature test (e.g. get all inspections).
+    - Get the test passing using the minimum amount of code.
+    - Refactor solution.
+    - Write specific lower level tests in the process (Unit tests).
+- Lean controllers
+    - Controllers should only deal with request and response.
+    - Hand off business logic/db interactions to a Service class.
+- Use a DDD approach
+    - Service class handles business logic.
+    - Repositories handle DB/external interactions that are only accessed via a service class.
+    - Value objects.
+- Use Laravel's service container to define bindings, e.g. Service and Repository classes. When defining these bindings I have used interfaces so I could write unit tests that mocked the Service and Repository classes to ensure these classes methods were implemented correctly.
+
+### Useful tips to review solution
+
+- View `routes/api.php` to see available routes.
+- Run `./vendor/bin/sail artisan db:seed` once app is running to seed a few inspections.
+- To run tests: `./vendor/bin/sail test`.
+
+## Significant files for review
+  - specifications/api.json
+  - routes/api.php
+  - app/Http/Controllers/InspectionController.php
+  - app/Providers/AppServiceProvider.php
+  - app/CyberHawk/*
+  - tests/Feature/GetInspectionsTest.php
+  - tests/Unit/*
