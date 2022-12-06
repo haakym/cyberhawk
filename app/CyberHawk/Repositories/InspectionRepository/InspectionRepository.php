@@ -15,4 +15,9 @@ class InspectionRepository implements InspectionRepositoryInterface
     {
         return $this->inspectionModel->get();
     }
+
+    public function getById(int $id)
+    {
+        return $this->inspectionModel->findOrFail($id);
+    }
 }

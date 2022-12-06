@@ -18,7 +18,7 @@ class TurbineFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->firstName(),
+            'name' => $this->faker->randomNumber(5, true),
             'wind_farm_id' => WindFarm::factory()
         ];
     }

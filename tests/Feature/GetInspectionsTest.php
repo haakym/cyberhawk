@@ -42,7 +42,7 @@ class GetInspectionsTest extends TestCase
     {
         $inspections = Inspection::factory()->count(3)->create();
 
-        $response = $this->get("/api/inspection/{$inspections[0]->id}");
+        $response = $this->get('/api/inspections/' . $inspections[0]->id);
 
         $response->assertStatus(200);
         

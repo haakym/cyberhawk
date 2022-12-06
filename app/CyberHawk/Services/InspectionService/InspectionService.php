@@ -15,4 +15,9 @@ class InspectionService implements InspectionServiceInterface
     {
         return $this->inspectionRepository->get();
     }
+
+    public function getInspectionById(int $id)
+    {
+        return $this->inspectionRepository->getById($id);
+    }
 }

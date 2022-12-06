@@ -20,3 +20,4 @@ use App\Http\Controllers\InspectionController;
 // });
 
 Route::get('/inspections', [InspectionController::class, 'index']);
+Route::get('/inspections/{id}', [InspectionController::class, 'show']);
