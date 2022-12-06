@@ -68,7 +68,9 @@ composer install --ignore-platform-reqs
 
 ## Your Notes
 
-Hello! Thank you for reviewing my my work.
+Hello! Thank you for reviewing my my work. I look forward to the opportunity to discuss my approach to this solution.
+
+Please note the front-end solution can be found here: [https://github.com/haakym/cyberhawk-fe](https://github.com/haakym/cyberhawk-fe)
 
 ### Getting started
 
@@ -103,7 +105,7 @@ Note: when running `./vendor/bin/sail up` the database may not run correctly if 
 - Run `./vendor/bin/sail artisan db:seed` once app is running to seed a few inspections.
 - To run tests: `./vendor/bin/sail test`.
 
-## Significant files for review
+### Significant files for review
   - specifications/api.json
   - routes/api.php
   - app/Http/Controllers/InspectionController.php
@@ -111,3 +113,14 @@ Note: when running `./vendor/bin/sail up` the database may not run correctly if 
   - app/CyberHawk/*
   - tests/Feature/GetInspectionsTest.php
   - tests/Unit/*
+
+### Improvements
+
+ - Implement authentication.
+    - register/login/refresh routes that provide a JWT to the front-end solution.
+ - Implement authorisation.
+    - Associate the User model with the Account model, then restrict wind farms and related data to the user's account, then in the front end the user will only be able to see data that is linked to their account.
+ - Implement pagination for the inspections endpoint so there is not too much data returned.
+ - Comments, return types on all methods and classes - i.e. better documentation.
+ - More domain objects.
+ - More unit tests.
