@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Turbine;
-use App\ValueObjects\TurbineComponentType;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\CyberHawk\ValueObjects\Enums\TurbineComponentType;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TurbineComponent>

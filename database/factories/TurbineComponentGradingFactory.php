@@ -6,8 +6,8 @@ use DateTime;
 use App\Models\Inspection;
 use Illuminate\Support\Carbon;
 use App\Models\TurbineComponent;
-use App\ValueObjects\TurbineComponentGrade;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\CyberHawk\ValueObjects\Enums\TurbineComponentGrade;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TurbineComponentGrading>

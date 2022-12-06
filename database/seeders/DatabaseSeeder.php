@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $inspections = Inspection::factory()->count(5)->create();
+        $inspections = Inspection::factory()
+                        ->count(5)
+                        ->hasComponentGradings(2)
+                        ->create();
     }
 }
