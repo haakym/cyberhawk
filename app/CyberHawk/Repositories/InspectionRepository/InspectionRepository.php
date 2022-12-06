@@ -13,11 +13,16 @@ class InspectionRepository implements InspectionRepositoryInterface
 
     public function get()
     {
-        return $this->inspectionModel->get();
+        return $this->inspectionModel
+                ->withCount('componentGradings')
+                ->with(['pilot', 'turbine.windfarm'])
+                ->get();
     }
 
     public function getById(int $id)
     {
-        return $this->inspectionModel->findOrFail($id);
+        return $this->inspectionModel
+                ->with(['pilot', 'turbine.windfarm', 'componentGradings.turbineComponent'])
+                ->findOrFail($id);
     }
 }

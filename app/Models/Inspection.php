@@ -6,6 +6,7 @@ use App\Models\Pilot;
 use App\Models\Turbine;
 use App\Models\TurbineComponent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Inspection extends Model
@@ -24,8 +25,8 @@ class Inspection extends Model
         return $this->belongsTo(Pilot::class);
     }
 
-    public function turbineComponents()
+    public function componentGradings()
     {
-        return $this->hasMany(TurbineComponent::class);
+        return $this->hasMany(TurbineComponentGrading::class);
     }
 }
